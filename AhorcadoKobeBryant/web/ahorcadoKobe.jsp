@@ -60,8 +60,6 @@
       </div>
     </div>
   </main>
-
-  <!-- 🚀 Insertamos las palabras desde request en JavaScript -->
   <script>
     const palabras = [
     <% if (listaPalabras != null && !listaPalabras.isEmpty()) {
@@ -81,7 +79,6 @@
     }
   </script>
 
-  <!-- Script del juego -->
   <script src="js/script.js"></script>
 </body>
 </html>

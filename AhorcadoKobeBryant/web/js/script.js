@@ -5,7 +5,7 @@ let tiempo; // tiempo restante
 let intervalo; // control del temporizador
 let pistaActual = ""; 
 
-// 🔹 Usamos el array de palabras que viene del JSP
+// Usamos el array de palabras que viene del JSP
 // const palabras = []; // ya definido en el JSP
 
 const btn = id("jugar");
@@ -151,7 +151,7 @@ btn_pista.addEventListener("click", () => {
 // Iniciar juego
 btn.addEventListener("click", iniciar);
 
-// 👉 Al inicio, desactivar letras
+//  Al inicio, desactivar letras
 for (let i = 0; i < btn_letras.length; i++) {
   btn_letras[i].disabled = true;
 }
