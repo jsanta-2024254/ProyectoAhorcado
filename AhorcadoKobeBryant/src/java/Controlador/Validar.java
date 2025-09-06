@@ -31,8 +31,7 @@ public class Validar extends HttpServlet {
             sesion.setAttribute("usuario", usuario);
 
             // Redirigir al JSP del juego
-            response.sendRedirect("ahorcadoKobe.jsp");
-
+            response.sendRedirect("ControladorPalabra");
         } else {
             // Usuario inválido → mensaje de error
             request.setAttribute("mensajeError", "Usuario o contraseña incorrectos");

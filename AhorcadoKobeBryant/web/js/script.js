@@ -5,7 +5,8 @@ let tiempo; // tiempo restante
 let intervalo; // control del temporizador
 let pistaActual = ""; 
 
-const palabras = [];
+// 🔹 Usamos el array de palabras que viene del JSP
+// const palabras = []; // ya definido en el JSP
 
 const btn = id("jugar");
 const imagen = id("imagen");
@@ -26,6 +27,11 @@ function id(str) {
 }
 
 function iniciar(event) {
+  if (!palabras || palabras.length === 0) {
+    alert("No hay palabras disponibles para jugar.");
+    return;
+  }
+
   imagen.src = "Image/kobe0.png";
   btn.disabled = true;
   cant_errores = 0;
@@ -57,6 +63,7 @@ function iniciar(event) {
 
   for (let i = 0; i < btn_letras.length; i++) {
     btn_letras[i].disabled = false;
+    btn_letras[i].classList.remove("usada");
   }
 
   for (let i = 0; i < cant_letras; i++) {
@@ -76,6 +83,7 @@ function click_letras(event) {
   const spans = document.querySelectorAll("#palabra_a_adivinar span");
   const button = event.target;
   button.disabled = true;
+  button.classList.add("usada");
   const letra = button.innerHTML.toLowerCase();
   const palabra = palabrita.toLowerCase();
 
@@ -136,7 +144,7 @@ function actualizarTiempo() {
 
 // Mostrar pista
 btn_pista.addEventListener("click", () => {
-  pistaElem.innerHTML = "Pista: " + pistaActual; //  usamos la variable
+  pistaElem.innerHTML = "Pista: " + pistaActual; // usamos la variable
   btn_pista.disabled = true; // solo una pista por partida
 });
 

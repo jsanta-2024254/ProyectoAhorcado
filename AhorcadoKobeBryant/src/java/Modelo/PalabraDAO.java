@@ -10,19 +10,18 @@ import java.util.List;
 
 public class PalabraDAO {
 
-    private Connection conexion;
-
     public List<Palabra> listarPalabras() {
         List<Palabra> lista = new ArrayList<>();
         String sql = "SELECT codigo_Palabra, Palabra, pista FROM Palabras";
 
-        try {
-            // ✅ Usamos tu clase Conexion
-            Conexion con = new Conexion();
-            conexion = con.Conexion();
-            
-            PreparedStatement ps = conexion.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
+        try (Connection conexion = new Conexion().Conexion();
+             PreparedStatement ps = conexion.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            if (conexion == null) {
+                System.out.println("Error: conexión nula a la base de datos");
+                return lista;
+            }
 
             while (rs.next()) {
                 Palabra palabra = new Palabra();
@@ -32,12 +31,13 @@ public class PalabraDAO {
                 lista.add(palabra);
             }
 
-            rs.close();
-            ps.close();
-            conexion.close();
+            System.out.println("DAO: palabras obtenidas = " + lista.size());
+            for (Palabra p : lista) {
+                System.out.println(p.getPalabra() + " | " + p.getPista());
+            }
 
         } catch (SQLException e) {
-            System.out.println("Error al listar palabras: " + e.getMessage());
+            System.out.println("Error DAO: " + e.getMessage());
             e.printStackTrace();
         }
 

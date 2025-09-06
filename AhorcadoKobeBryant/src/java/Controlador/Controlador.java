@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import modelo.Palabra;
 import modelo.PalabraDAO;
 
@@ -20,19 +19,14 @@ public class Controlador extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // ✅ Obtener todas las palabras desde el DAO
         List<Palabra> listaPalabras = palabraDAO.listarPalabras();
 
+        System.out.println("Servlet: palabras obtenidas = " + listaPalabras.size());
+
         if (listaPalabras != null && !listaPalabras.isEmpty()) {
-            // Guardamos en sesión
-            HttpSession sesion = request.getSession();
-            sesion.setAttribute("listaPalabras", listaPalabras);
-
-            // Redirigimos al JSP del juego
-            response.sendRedirect("ahorcadoKobe.jsp");
-
+            request.setAttribute("listaPalabras", listaPalabras);
+            request.getRequestDispatcher("ahorcadoKobe.jsp").forward(request, response);
         } else {
-            // Si no hay palabras, mandamos mensaje de error
             request.setAttribute("mensajeError", "No hay palabras disponibles en la base de datos");
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
