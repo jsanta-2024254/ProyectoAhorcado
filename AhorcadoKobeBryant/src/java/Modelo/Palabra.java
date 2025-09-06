@@ -3,14 +3,17 @@ package modelo;
 public class Palabra {
     private int codigoPalabra;
     private String palabra;
+    private String pista;
 
     // Constructor vacío
-    public Palabra() {}
+    public Palabra() {
+    }
 
     // Constructor con parámetros
-    public Palabra(int codigoPalabra, String palabra) {
+    public Palabra(int codigoPalabra, String palabra, String pista) {
         this.codigoPalabra = codigoPalabra;
         this.palabra = palabra;
+        this.pista = pista;
     }
 
     // Getters y Setters
@@ -30,12 +33,20 @@ public class Palabra {
         this.palabra = palabra;
     }
 
-    // Para debug
+    public String getPista() {
+        return pista;
+    }
+
+    public void setPista(String pista) {
+        this.pista = pista;
+    }
+
     @Override
     public String toString() {
-        return "Palabra{" +
-                "codigoPalabra=" + codigoPalabra +
-                ", palabra='" + palabra + '\'' +
+        return "Palabra{" + 
+                "codigoPalabra=" + codigoPalabra + 
+                ", palabra='" + palabra + '\'' + 
+                ", pista='" + pista + '\'' + 
                 '}';
     }
 }
