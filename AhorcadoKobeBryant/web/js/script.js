@@ -3,15 +3,9 @@ let cant_errores = 0;
 let cant_aciertos = 0;
 let tiempo; // tiempo restante
 let intervalo; // control del temporizador
-let pistaActual = ""; // 🔥 aquí guardamos la pista actual
+let pistaActual = ""; 
 
-const palabras = [
-  { palabra: "kobebryant", pista: "Nombre completo del homenajeado" },
-  { palabra: "blackmamba", pista: "Apodo legendario de Kobe " },
-  { palabra: "kobeprotro", pista: "Su linea de zapatillas nike" },
-  { palabra: "angeleslakers", pista: "Equipo de toda suAA vida " },
-  { palabra: "nbachampion", pista: "Ganó 5 veces este título " }
-];
+const palabras = [];
 
 const btn = id("jugar");
 const imagen = id("imagen");
@@ -40,7 +34,6 @@ function iniciar(event) {
   tiempo = 60;
   btn_pista.disabled = false;
 
-  // 🔥 Mostrar temporizador
   tiempoElem.style.display = "inline-flex";
 
   // Reiniciar temporizador
@@ -57,7 +50,7 @@ function iniciar(event) {
   const valor_al_azar = obtener_random(0, cant_palabras);
 
   palabrita = palabras[valor_al_azar].palabra;
-  pistaActual = palabras[valor_al_azar].pista; // 🔥 guardamos la pista en variable
+  pistaActual = palabras[valor_al_azar].pista; // guardamos la pista en variable
   console.log("Palabra elegida:", palabrita);
 
   const cant_letras = palabrita.length;
@@ -71,7 +64,7 @@ function iniciar(event) {
     parrafo.appendChild(span);
   }
 
-  id("resultado").innerHTML = ""; // limpiar mensaje anterior
+  id("resultado").innerHTML = ""; 
 }
 
 // Manejo de letras
@@ -105,7 +98,7 @@ function click_letras(event) {
     id("resultado").innerHTML = "Perdiste, la palabra era " + palabrita;
     game_over();
   } else if (cant_aciertos === palabrita.length) {
-    id("resultado").innerHTML = "Ganaste, anotaste el game winner 🏀 Mamba Forever";
+    id("resultado").innerHTML = "Ganaste, anotaste el game winner  Mamba Forever";
     game_over();
   }
 }
@@ -118,7 +111,6 @@ function game_over() {
   btn.disabled = false;
   clearInterval(intervalo);
 
-  // 🔥 Ocultar temporizador al finalizar
   tiempoElem.style.display = "none";
 }
 
@@ -144,7 +136,7 @@ function actualizarTiempo() {
 
 // Mostrar pista
 btn_pista.addEventListener("click", () => {
-  pistaElem.innerHTML = "Pista: " + pistaActual; // 🔥 usamos la variable
+  pistaElem.innerHTML = "Pista: " + pistaActual; //  usamos la variable
   btn_pista.disabled = true; // solo una pista por partida
 });
 
