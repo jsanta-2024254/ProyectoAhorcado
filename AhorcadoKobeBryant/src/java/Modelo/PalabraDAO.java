@@ -10,9 +10,9 @@ import java.util.List;
 
 public class PalabraDAO {
 
-    public List<Palabra> listarPalabras() {
-        List<Palabra> lista = new ArrayList<>();
-        String sql = "SELECT codigo_Palabra, Palabra, pista FROM Palabras";
+    public List<Words> listarPalabras() {
+        List<Words> lista = new ArrayList<>();
+        String sql = "SELECT code_word, word, hint FROM Words";
 
         try (Connection conexion = new Conexion().Conexion();
              PreparedStatement ps = conexion.prepareStatement(sql);
@@ -24,16 +24,16 @@ public class PalabraDAO {
             }
 
             while (rs.next()) {
-                Palabra palabra = new Palabra();
-                palabra.setCodigoPalabra(rs.getInt("codigo_Palabra"));
-                palabra.setPalabra(rs.getString("Palabra"));
-                palabra.setPista(rs.getString("pista"));
+                Words palabra = new Words();
+                palabra.setCode_word(rs.getInt("code_word"));
+                palabra.setWord(rs.getString("word"));
+                palabra.setHint(rs.getString("hint"));
                 lista.add(palabra);
             }
 
             System.out.println("DAO: palabras obtenidas = " + lista.size());
-            for (Palabra p : lista) {
-                System.out.println(p.getPalabra() + " | " + p.getPista());
+            for (Words p : lista) {
+                System.out.println(p.getWord() + " | " + p.getHint());
             }
 
         } catch (SQLException e) {
