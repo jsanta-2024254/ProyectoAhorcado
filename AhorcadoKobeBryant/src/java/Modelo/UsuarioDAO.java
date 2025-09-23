@@ -16,18 +16,18 @@ public class UsuarioDAO {
     ResultSet rs;
 
     // Método para validar usuario y contraseña
-    public Usuario validar(String nombreUsuario, String clave) {
-        Usuario usuario = null;
-        String sql = "SELECT * FROM Usuario WHERE nombre_usuario=? AND contraseña_usuario=?";
+    public Useer validar(String user_name, String user_password) {
+        Useer useer = null;
+        String sql = "SELECT * FROM Useer WHERE user_name=? AND user_password=?";
         try {
             con = cn.Conexion(); // Obtenemos la conexión
             ps = con.prepareStatement(sql);
-            ps.setString(1, nombreUsuario);
-            ps.setString(2, clave);
+            ps.setString(1, user_name);
+            ps.setString(2, user_password);
             rs = ps.executeQuery();
             if (rs.next()) {
                 // Se simplifco el codigo a utilizar 
-                usuario = new Usuario(rs.getInt("codigo_usuario"), rs.getString("nombre_usuario"), rs.getString("contraseña_usuario"));
+                useer = new Useer(rs.getInt("user_code"), rs.getString("user_name"), rs.getString("user_password"));
                 //usuario = new Usuario();
                 //usuario.setCodigoUsuario(rs.getInt("codigo_usuario"));
                 //usuario.setNombreUsuario(rs.getString("nombre_usuario"));
@@ -57,6 +57,6 @@ public class UsuarioDAO {
             }
         }
 
-        return usuario;
+        return useer;
     }
 }
