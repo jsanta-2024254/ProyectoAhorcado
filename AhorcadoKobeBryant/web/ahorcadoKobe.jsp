@@ -2,7 +2,6 @@
 <%@page import="modelo.Words"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-    // Obtenemos la lista de palabras desde el request (enviada por el servlet)
     List<Words> listaPalabras = (List<Words>) request.getAttribute("listaPalabras");
 %>
 <!DOCTYPE html>
@@ -16,14 +15,12 @@
   <header>
     <h1>Ahorcado edición Kobe Bryant</h1>
     <div class="marcador">
-      <button id="jugar">Obtener palabra</button>
-      <button id="pista">Mostrar pista</button>
-      <div id="tiempo" class="tiempo">60</div>
     </div>
   </header>
 
   <main>
     <img id="imagen" src="Image/kobe0.png" alt="Ahorcado estilo Kobe Bryant" />
+     <div id="tiempo" class="tiempo">60</div>
     <div class="panel">
       <p id="palabra_a_adivinar"></p>
       <p id="resultado"></p>
@@ -58,26 +55,34 @@
         <button>y</button>
         <button>z</button>
       </div>
+        <div id="Boton de juego">
+      <button id="jugar">Obtener palabra</button>
+      <button id="pista">Mostrar pista</button>
+      <button id="pausar">Pausar</button>
+      <button id="reiniciar">Reiniciar</button>
+      <button id="salir">Salir</button> 
+        </div>
     </div>
   </main>
- <script>
-  const palabras = [
-  <% if (listaPalabras != null && !listaPalabras.isEmpty()) {
-         for (int i = 0; i < listaPalabras.size(); i++) {
-             Words p = listaPalabras.get(i);
-             String coma = (i < listaPalabras.size() - 1) ? "," : "";
-  %>
-    { palabra: "<%= p.getWord() %>", pista: "<%= p.getHint() %>" }<%= coma %>
-  <%     }
-       } %>
-  ];
 
-  console.log("Palabras cargadas desde request:", palabras);
+  <script>
+    const palabras = [
+      <% if (listaPalabras != null && !listaPalabras.isEmpty()) {
+             for (int i = 0; i < listaPalabras.size(); i++) {
+                 Words p = listaPalabras.get(i);
+                 String coma = (i < listaPalabras.size() - 1) ? "," : "";
+      %>
+        { palabra: "<%= p.getWord() %>", pista: "<%= p.getHint() %>" }<%= coma %>
+      <%     }
+         } %>
+    ];
 
-  if (!palabras || palabras.length === 0) {
-      alert("No hay palabras disponibles en la base de datos");
-  }
-</script>
+    console.log("Palabras cargadas desde request:", palabras);
+
+    if (!palabras || palabras.length === 0) {
+        alert("No hay palabras disponibles en la base de datos");
+    }
+  </script>
 
   <script src="js/script.js"></script>
 </body>

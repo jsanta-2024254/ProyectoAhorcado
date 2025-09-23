@@ -5,16 +5,19 @@ let tiempo; // tiempo restante
 let intervalo; // control del temporizador
 let pistaActual = ""; 
 
-// Usamos el array de palabras que viene del JSP
-// const palabras = []; // ya definido en el JSP
-
 const btn = id("jugar");
 const imagen = id("imagen");
 const btn_pista = id("pista"); 
 const tiempoElem = id("tiempo"); 
 const pistaElem = id("texto_pista"); 
-
 const btn_letras = document.querySelectorAll("#letras button");
+
+// Nuevos botones
+const btn_pausar = id("pausar");
+const btn_reiniciar = id("reiniciar");
+const btn_salir = id("salir");
+
+let pausado = false; // Control de pausa
 
 function obtener_random(num_min, num_max) {
   const amplitud_valores = num_max - num_min;
@@ -39,10 +42,11 @@ function iniciar(event) {
   pistaElem.innerHTML = "";
   tiempo = 60;
   btn_pista.disabled = false;
+  pausado = false;
+  btn_pausar.innerHTML = "Pausar";
 
   tiempoElem.style.display = "inline-flex";
 
-  // Reiniciar temporizador
   clearInterval(intervalo);
   intervalo = setInterval(actualizarTiempo, 1000);
   tiempoElem.innerHTML = tiempo;
@@ -56,7 +60,7 @@ function iniciar(event) {
   const valor_al_azar = obtener_random(0, cant_palabras);
 
   palabrita = palabras[valor_al_azar].palabra;
-  pistaActual = palabras[valor_al_azar].pista; // guardamos la pista en variable
+  pistaActual = palabras[valor_al_azar].pista;
   console.log("Palabra elegida:", palabrita);
 
   const cant_letras = palabrita.length;
@@ -80,6 +84,8 @@ for (let i = 0; i < btn_letras.length; i++) {
 }
 
 function click_letras(event) {
+  if (pausado) return; // no permitir clics si está en pausa
+
   const spans = document.querySelectorAll("#palabra_a_adivinar span");
   const button = event.target;
   button.disabled = true;
@@ -118,40 +124,68 @@ function game_over() {
   }
   btn.disabled = false;
   clearInterval(intervalo);
-
   tiempoElem.style.display = "none";
 }
 
 // Temporizador
 function actualizarTiempo() {
-  tiempo--;
-  tiempoElem.innerHTML = tiempo;
+  if (!pausado) {
+    tiempo--;
+    tiempoElem.innerHTML = tiempo;
 
-  // ⚠️ Efecto visual cuando queda poco tiempo
-  if (tiempo <= 10) {
-    tiempoElem.style.color = "red";
-    tiempoElem.style.fontWeight = "bold";
-  } else {
-    tiempoElem.style.color = "white";
-    tiempoElem.style.fontWeight = "normal";
-  }
+    if (tiempo <= 10) {
+      tiempoElem.style.color = "red";
+      tiempoElem.style.fontWeight = "bold";
+    } else {
+      tiempoElem.style.color = "white";
+      tiempoElem.style.fontWeight = "normal";
+    }
 
-  if (tiempo <= 0) {
-    id("resultado").innerHTML = "Se acabó el tiempo, la palabra era " + palabrita;
-    game_over();
+    if (tiempo <= 0) {
+      id("resultado").innerHTML = "Se acabó el tiempo, la palabra era " + palabrita;
+      game_over();
+    }
   }
 }
 
 // Mostrar pista
 btn_pista.addEventListener("click", () => {
-  pistaElem.innerHTML = "Pista: " + pistaActual; // usamos la variable
-  btn_pista.disabled = true; // solo una pista por partida
+  pistaElem.innerHTML = "Pista: " + pistaActual;
+  btn_pista.disabled = true;
+});
+
+// Botón Pausar / Reanudar
+btn_pausar.addEventListener("click", () => {
+  if (!pausado) {
+    clearInterval(intervalo);
+    pausado = true;
+    btn_pausar.innerHTML = "Reanudar";
+    id("resultado").innerHTML = "Juego en pausa";
+  } else {
+    intervalo = setInterval(actualizarTiempo, 1000);
+    pausado = false;
+    btn_pausar.innerHTML = "Pausar";
+    id("resultado").innerHTML = "";
+  }
+});
+
+// Botón Reiniciar
+btn_reiniciar.addEventListener("click", () => {
+  clearInterval(intervalo);
+  iniciar(); 
+});
+
+// Botón Salir
+btn_salir.addEventListener("click", () => {
+  if (confirm("¿Deseas salir del juego?")) {
+    window.location.href = "index.jsp"; // Cambia según tu página principal
+  }
 });
 
 // Iniciar juego
 btn.addEventListener("click", iniciar);
 
-//  Al inicio, desactivar letras
+// Al inicio, desactivar letras
 for (let i = 0; i < btn_letras.length; i++) {
   btn_letras[i].disabled = true;
 }
