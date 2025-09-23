@@ -1,0 +1,185 @@
+body {
+    margin: 0;
+    background: url('../Image/KobeFondo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Roboto Mono', Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: linear-gradient(90deg, #552583, #FDB927); 
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.7);
+    border-bottom: 3px solid #fff;
+}
+
+h1 {
+    margin: 0;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 2.8em;
+    text-shadow: 2px 2px 6px black, 0px 0px 10px #FDB927; 
+}
+
+#jugar,
+#pista {
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 2px solid #552583;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    background: #FDB927;  
+    color: #552583;        
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+}
+
+#jugar:hover,
+#pista:hover {
+    background: #552583;
+    color: #FDB927;
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px #FDB927;
+}
+
+#jugar:disabled,
+#pista:disabled {
+    background: gray;
+    color: #fff;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.tiempo {
+    font-family: 'Carter One', sans-serif;
+    font-size: 3em;
+    font-weight: bold;
+    color: #FDB927;               
+    background: rgba(0,0,0,0.8);          
+    padding: 15px 25px;
+    border-radius: 12px;
+    display: none;   
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 15px rgba(255,255,255,0.7);
+    min-width: 100px;
+    min-height: 80px;          
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.tiempo-low {
+    color: red !important;
+    animation: parpadeo 0.8s steps(1) infinite;
+    filter: drop-shadow(0 0 8px #ff3b3b);
+}
+
+@keyframes parpadeo {
+    0% { opacity: 1; }
+    50% { opacity: 0.2; }
+    100% { opacity: 1; }
+}
+
+main {
+    width: 80%;
+    margin: auto;
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    gap: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 6px 25px rgba(0,0,0,0.9);
+}
+
+#imagen {
+    max-width: 100%;
+    height: 500px;
+    border: 5px solid #FDB927;
+    border-radius: 14px;
+    box-shadow: 0px 6px 20px rgba(253,185,39,0.8);
+}
+
+#palabra_a_adivinar {
+    height: 3em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#palabra_a_adivinar span {
+    vertical-align: bottom;
+    font-size: 2.5em;
+    border-bottom: 4px solid #552583;
+    width: 35px;
+    text-align: center;
+    margin-right: 8px;
+    display: inline-block;
+    color: #FDB927;
+    font-weight: bold;
+    text-shadow: 0px 0px 6px black;
+}
+
+/* PISTA */
+#texto_pista {
+    margin-top: 15px;
+    font-size: 1.2em;
+    color: #fff;
+    font-style: italic;
+    text-align: center;
+    text-shadow: 0px 0px 10px #FDB927;
+}
+
+/* RESULTADO */
+#resultado {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 6px black, 0px 0px 10px #552583;
+}
+
+/* LETRAS */
+#letras {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+#letras button {
+    width: 50px;
+    height: 50px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 2px solid #552583;
+    border-radius: 10px;
+    background: #fff;
+    color: #000;
+    transition: all 0.25s ease;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+#letras button:hover:not(:disabled) {
+    background: #552583;
+    color: #FDB927;
+    transform: scale(1.15);
+    box-shadow: 0px 0px 15px #FDB927;
+}
+
+#letras button:disabled {
+    background: gray;
+    color: #fff;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
