@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import modelo.Usuario;
+import modelo.Useer;
 import modelo.UsuarioDAO;
 
 @WebServlet("/Validacion")
@@ -20,15 +20,15 @@ public class Validar extends HttpServlet {
             throws ServletException, IOException {
 
         // Obtener los datos del formulario
-        String nombreUsuario = request.getParameter("usuario");
-        String clave = request.getParameter("clave");
+        String user_name = request.getParameter("user_name");
+        String user_password = request.getParameter("user_password"); 
 
-        Usuario usuario = usuarioDAO.validar(nombreUsuario, clave);
+        Useer useer = usuarioDAO.validar(user_name, user_password);
 
-        if (usuario != null) {
+        if (useer != null) {
             // Usuario válido → guardamos en sesión
             HttpSession sesion = request.getSession();
-            sesion.setAttribute("usuario", usuario);
+            sesion.setAttribute("user_name", useer);
 
             // Redirigir al JSP del juego
             response.sendRedirect("ControladorPalabra");
