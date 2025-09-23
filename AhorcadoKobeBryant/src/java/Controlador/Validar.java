@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import modelo.Useer;
 import modelo.UsuarioDAO;
 
-@WebServlet("/Validacion")
+@WebServlet("/Validar")
 public class Validar extends HttpServlet {
 
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
