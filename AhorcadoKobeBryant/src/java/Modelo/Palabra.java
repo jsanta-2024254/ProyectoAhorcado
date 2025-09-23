@@ -1,52 +1,50 @@
 package modelo;
 
-public class Palabra {
-    private int codigoPalabra;
-    private String palabra;
-    private String pista;
+public class Words {
+    private int code_word;
+    private String word;
+    private String hint;
 
     // Constructor vacío
-    public Palabra() {
+    public Words() {
     }
 
     // Constructor con parámetros
-    public Palabra(int codigoPalabra, String palabra, String pista) {
-        this.codigoPalabra = codigoPalabra;
-        this.palabra = palabra;
-        this.pista = pista;
+    public Words(int code_word, String word, String hint) {
+        this.code_word = code_word;
+        this.word = word;
+        this.hint = hint;
     }
 
     // Getters y Setters
-    public int getCodigoPalabra() {
-        return codigoPalabra;
+
+    public int getCode_word() {
+        return code_word;
     }
 
-    public void setCodigoPalabra(int codigoPalabra) {
-        this.codigoPalabra = codigoPalabra;
+    public void setCode_word(int code_word) {
+        this.code_word = code_word;
     }
 
-    public String getPalabra() {
-        return palabra;
+    public String getWord() {
+        return word;
     }
 
-    public void setPalabra(String palabra) {
-        this.palabra = palabra;
+    public void setWord(String word) {
+        this.word = word;
     }
 
-    public String getPista() {
-        return pista;
+    public String getHint() {
+        return hint;
     }
 
-    public void setPista(String pista) {
-        this.pista = pista;
+    public void setHint(String hint) {
+        this.hint = hint;
     }
 
     @Override
     public String toString() {
-        return "Palabra{" + 
-                "codigoPalabra=" + codigoPalabra + 
-                ", palabra='" + palabra + '\'' + 
-                ", pista='" + pista + '\'' + 
-                '}';
+        return "Words{" + "code_word=" + code_word + ", word=" + word + ", hint=" + hint + '}';
     }
+    
 }
