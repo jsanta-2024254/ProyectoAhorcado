@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Palabra;
+import modelo.Words;
 import modelo.PalabraDAO;
 
 @WebServlet("/ControladorPalabra")
@@ -19,7 +19,7 @@ public class Controlador extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<Palabra> listaPalabras = palabraDAO.listarPalabras();
+        List<Words> listaPalabras = palabraDAO.listarPalabras();
 
         System.out.println("Servlet: palabras obtenidas = " + listaPalabras.size());
 
