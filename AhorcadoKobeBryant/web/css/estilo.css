@@ -1,260 +1,74 @@
 
-body {
+body.login-body {
     margin: 0;
-    background: url('../Image/Cancha.jpg') no-repeat center center fixed;
-    background-size: cover;
-    font-family: 'Roboto Mono', Arial, Helvetica, sans-serif;
-    min-height: 100vh;
-    color: white;
-    display: flex;
-    flex-direction: column;
-}
-
-
-header {
-    background: linear-gradient(90deg, orange, purple);
-    padding: 15px;
-    text-align: center;
-    margin-bottom: 20px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.6);
-}
-
-h1 {
-    margin: 0;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 2.5em;
-    text-shadow: 2px 2px 5px black;
-}
-
-.marcador {
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
-    margin-top: 10px;
-}
-
-#jugar,
-#pista {
-    padding: 10px 20px;
-    font-size: 1em;
-    font-weight: bold;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    background: white;
-    color: black;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.5);
-}
-
-#jugar:hover,
-#pista:hover {
-    background: orange;
-    color: white;
-    transform: scale(1.1);
-    box-shadow: 0px 0px 12px orange;
-}
-
-#jugar:disabled,
-#pista:disabled {
-    background: gray;
-    color: #fff;
-    cursor: not-allowed;
-    opacity: 0.6;
-}
-
-.tiempo {
-    font-family: 'Carter One', sans-serif;
-    font-size: 3em;
-    font-weight: bold;
-    color: #fff;               
-    background: #000;          
-    padding: 15px 25px;
-    border-radius: 12px;
-    display: none;   
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 0px 12px rgba(255,255,255,0.6);
-    min-width: 100px;
-    min-height: 80px;          
-    text-align: center;
-    letter-spacing: 2px;
-}
-
-.tiempo-low {
-    color: red !important;
-    animation: parpadeo 0.8s steps(1) infinite;
-    filter: drop-shadow(0 0 6px #ff3b3b);
-}
-@keyframes parpadeo {
-    0% { opacity: 1; }
-    50% { opacity: 0.2; }
-    100% { opacity: 1; }
-}
-
-
-main {
-    width: 80%;
-    margin: auto;
-    padding: 25px;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    gap: 20px;
-    border-radius: 15px;
-    box-shadow: 0px 6px 20px rgba(0,0,0,0.8);
-}
-
-#imagen {
-    max-width: 100%;
-    height: 500px;
-    border: 4px solid orange;
-    border-radius: 12px;
-    box-shadow: 0px 4px 15px rgba(255,140,0,0.6);
-}
-
-#palabra_a_adivinar {
-    height: 3em;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-#palabra_a_adivinar span {
-    vertical-align: bottom;
-    font-size: 2.5em;
-    border-bottom: 4px solid orange;
-    width: 35px;
-    text-align: center;
-    margin-right: 8px;
-    display: inline-block;
-    color: white;
-    font-weight: bold;
-}
-
-#texto_pista {
-    margin-top: 15px;
-    font-size: 1.2em;
-    color: yellow;
-    font-style: italic;
-    text-align: center;
-    text-shadow: 1px 1px 3px black;
-}
-
-#resultado {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-top: 20px;
-    text-align: center;
-    color: white;
-    text-shadow: 2px 2px 6px black;
-}
-
-#letras {
-    margin-top: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-}
-
-#letras button {
-    width: 45px;
-    height: 45px;
-    font-size: 1.1em;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
-    border: 2px solid black;
-    border-radius: 8px;
-    background: white;
-    transition: all 0.25s ease;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-}
-
-#letras button:hover:not(:disabled) {
-    background: orange;
-    color: white;
-    transform: scale(1.15);
-    box-shadow: 0px 0px 12px orange;
-}
-
-#letras button:disabled {
-    background: gray;
-    color: #fff;
-    cursor: not-allowed;
-    opacity: 0.6;
-}
-
-
-/* =======================
-   LOGIN
-======================= */
-.login-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url('../Image/Cancha.jpg') no-repeat center center fixed;
-    background-size: cover;
-    font-family: 'Roboto Mono', Arial, sans-serif;
+    background: linear-gradient(135deg, #552583, #FDB927); 
+    font-family: 'Roboto Mono', monospace;
 }
 
 .login-container {
-    background: rgba(0, 0, 0, 0.85);
-    padding: 2rem;
-    border-radius: 12px;
+    width: 400px;
+    padding: 3rem;
+    border-radius: 25px;
+    background: #552583; 
+    border: 4px solid #FDB927;
+    box-shadow: 0 0 40px #FDB927, 0 0 60px #552583 inset;
     text-align: center;
-    color: white;
-    width: 320px;
-    box-shadow: 0px 6px 20px rgba(0,0,0,0.8);
+    color: #fff;
 }
 
 .login-container h2 {
-    font-family: 'Carter One', cursive;
-    margin-bottom: 1rem;
-    color: orange;
-    text-shadow: 2px 2px 5px black;
+    font-size: 2.5rem;
+    color: #FDB927;
+    text-shadow: 0 0 15px #FDB927, 0 0 25px #552583, 0 0 35px #fff;
+    margin-bottom: 2rem;
 }
 
 .login-container input {
     width: 100%;
-    padding: 0.8rem;
-    margin: 0.5rem 0;
+    padding: 1rem;
+    margin: 0.7rem 0;
+    border-radius: 15px;
     border: none;
-    border-radius: 8px;
-    font-size: 1em;
-    outline: none;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 1.1rem;
+    box-shadow: inset 0 0 10px #FDB927, inset 0 0 15px #552583;
+    transition: all 0.3s ease;
 }
 
 .login-container input:focus {
-    box-shadow: 0 0 8px orange;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #FDB927, 0 0 25px #552583 inset;
+    background: rgba(255,255,255,0.25);
 }
 
 .login-container button {
     width: 100%;
-    padding: 0.8rem;
+    padding: 1.2rem;
+    margin-top: 1rem;
+    border-radius: 15px;
     border: none;
-    border-radius: 8px;
-    background: orange;
-    color: black;
+    font-size: 1.2rem;
     font-weight: bold;
+    background: linear-gradient(135deg, #FDB927, #552583);
+    color: #fff;
     cursor: pointer;
-    transition: all 0.25s ease;
-    font-size: 1em;
-    margin-top: 10px;
+    box-shadow: 0 0 25px #FDB927, 0 0 40px #552583 inset;
+    transition: all 0.3s ease;
 }
 
 .login-container button:hover {
-    background: purple;
-    color: white;
-    transform: scale(1.05);
+    transform: scale(1.08) translateY(-4px);
+    background: linear-gradient(135deg, #552583, #FDB927);
+    box-shadow: 0 0 35px #FDB927, 0 0 50px #552583 inset;
 }
 
 .error {
     color: #ff4d4d;
-    margin-bottom: 1rem;
     font-weight: bold;
+    text-shadow: 0 0 15px #ff0000;
 }
