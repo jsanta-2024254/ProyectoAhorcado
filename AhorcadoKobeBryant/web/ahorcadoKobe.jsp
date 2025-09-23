@@ -10,7 +10,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Ahorcado Arcade Kobe Bryant Edition</title>
-  <link rel="stylesheet" href="css/estilo.css" />
+  <link rel="stylesheet" href="./css/estilos.css" />
 </head>
 <body>
   <header>
