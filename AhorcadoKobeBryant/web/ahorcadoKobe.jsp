@@ -1,16 +1,16 @@
 <%@page import="java.util.List"%>
-<%@page import="modelo.Palabra"%>
+<%@page import="modelo.Words"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
     // Obtenemos la lista de palabras desde el request (enviada por el servlet)
-    List<Palabra> listaPalabras = (List<Palabra>) request.getAttribute("listaPalabras");
+    List<Words> listaPalabras = (List<Words>) request.getAttribute("listaPalabras");
 %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <title>Ahorcado Arcade Kobe Bryant Edition</title>
-  <link rel="stylesheet" href="./css/estilos.css" />
+  <link rel="stylesheet" href="css/estilo.css" />
 </head>
 <body>
   <header>
@@ -60,24 +60,24 @@
       </div>
     </div>
   </main>
-  <script>
-    const palabras = [
-    <% if (listaPalabras != null && !listaPalabras.isEmpty()) {
-           for (int i = 0; i < listaPalabras.size(); i++) {
-               Palabra p = listaPalabras.get(i);
-               String coma = (i < listaPalabras.size() - 1) ? "," : "";
-    %>
-      { palabra: "<%= p.getPalabra() %>", pista: "<%= p.getPista() %>" }<%= coma %>
-    <%     }
-         } %>
-    ];
+ <script>
+  const palabras = [
+  <% if (listaPalabras != null && !listaPalabras.isEmpty()) {
+         for (int i = 0; i < listaPalabras.size(); i++) {
+             Words p = listaPalabras.get(i);
+             String coma = (i < listaPalabras.size() - 1) ? "," : "";
+  %>
+    { palabra: "<%= p.getWord() %>", pista: "<%= p.getHint() %>" }<%= coma %>
+  <%     }
+       } %>
+  ];
 
-    console.log("Palabras cargadas desde request:", palabras);
+  console.log("Palabras cargadas desde request:", palabras);
 
-    if (!palabras || palabras.length === 0) {
-        alert("No hay palabras disponibles en la base de datos");
-    }
-  </script>
+  if (!palabras || palabras.length === 0) {
+      alert("No hay palabras disponibles en la base de datos");
+  }
+</script>
 
   <script src="js/script.js"></script>
 </body>
