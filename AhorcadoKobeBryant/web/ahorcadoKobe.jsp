@@ -8,12 +8,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Ahorcado Arcade Kobe Bryant Edition</title>
+  <title>Ahorcado Kobe Bryant Legacy Edition</title>
   <link rel="stylesheet" href="css/estilos.css" />
 </head>
 <body>
   <header>
-    <h1>Ahorcado edición Kobe Bryant</h1>
+    <h1>Ahorcado Kobe Bryant Mamba Forever</h1>
     <div class="marcador">
     </div>
   </header>
