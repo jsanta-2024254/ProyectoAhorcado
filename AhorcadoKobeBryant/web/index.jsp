@@ -11,7 +11,7 @@
     <div class="box">
         <div class="container">
             <div class="top-header">
-                <span>Andev web</span>
+                <span> Login - Kobe ahorcado legacy edition</span>
                 <header>Iniciar Sesión</header>
             </div>
 
