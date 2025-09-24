@@ -9,7 +9,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Ahorcado Kobe Bryant Legacy Edition</title>
-  <link rel="stylesheet" href="css/estilos.css" />
+  <link rel="stylesheet" href="./css/estilos.css" />
 </head>
 <body>
   <header>
