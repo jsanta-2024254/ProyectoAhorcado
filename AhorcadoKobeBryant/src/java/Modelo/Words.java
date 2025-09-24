@@ -5,18 +5,15 @@ public class Words {
     private String word;
     private String hint;
 
-    // Constructor vacío
     public Words() {
     }
 
-    // Constructor con parámetros
     public Words(int code_word, String word, String hint) {
         this.code_word = code_word;
         this.word = word;
         this.hint = hint;
     }
 
-    // Getters y Setters
 
     public int getCode_word() {
         return code_word;

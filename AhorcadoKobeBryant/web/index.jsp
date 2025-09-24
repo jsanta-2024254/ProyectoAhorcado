@@ -15,7 +15,6 @@
                 <header>Iniciar Sesión</header>
             </div>
 
-            <!-- Mensaje de error dinámico -->
             <p class="error">${mensajeError}</p>
 
             <!-- FORMULARIO -->
