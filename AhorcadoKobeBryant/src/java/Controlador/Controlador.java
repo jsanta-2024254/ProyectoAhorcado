@@ -60,6 +60,14 @@ private PalabraDAO palabraDAO = new PalabraDAO();
 @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+            String accion = request.getParameter("accion");
+
+    if ("logout".equals(accion)) {
+        request.getSession().invalidate();
+
+        response.sendRedirect("index.jsp");
+        return;
+    }
 
         List<Words> listaPalabras = palabraDAO.listarPalabras();
 

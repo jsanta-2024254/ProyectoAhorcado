@@ -60,8 +60,7 @@
       <button id="pista">Mostrar pista</button>
       <button id="pausar">Pausar</button>
       <button id="reiniciar">Reiniciar</button>
-      <button id="salir">Salir</button> 
-        </div>
+      <button id="salir"onclick="window.location.href='ControladorPalabra?accion=logout'">Salir</button>        </div>
     </div>
   </main>
 

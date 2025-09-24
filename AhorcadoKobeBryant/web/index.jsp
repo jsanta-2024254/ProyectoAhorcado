@@ -31,14 +31,6 @@
                 <div class="input-field">
                     <input type="submit" class="submit" value="Ingresar">
                 </div>
-
-                <div class="bottom">
-                    <div class="left">
-                        <input type="checkbox" id="check">
-                        <label for="check"> Recordarme</label>
-                    </div>
-                    <div class="right">
-                    </div>
                 </div>
             </form>
         </div>
