@@ -1,8 +1,8 @@
 let palabrita;
 let cant_errores = 0;
 let cant_aciertos = 0;
-let tiempo; // tiempo restante
-let intervalo; // control del temporizador
+let tiempo; 
+let intervalo; 
 let pistaActual = ""; 
 
 const btn = id("jugar");
@@ -12,7 +12,6 @@ const tiempoElem = id("tiempo");
 const pistaElem = id("texto_pista"); 
 const btn_letras = document.querySelectorAll("#letras button");
 
-// Nuevos botones
 const btn_pausar = id("pausar");
 const btn_reiniciar = id("reiniciar");
 const btn_salir = id("salir");
@@ -117,7 +116,6 @@ function click_letras(event) {
   }
 }
 
-// Función para finalizar partida
 function game_over() {
   for (let i = 0; i < btn_letras.length; i++) {
     btn_letras[i].disabled = true;
@@ -125,6 +123,10 @@ function game_over() {
   btn.disabled = false;
   clearInterval(intervalo);
   tiempoElem.style.display = "none";
+
+  // Deshabilitar botón de pausar
+  btn_pausar.disabled = true;
+  pausado = false;
 }
 
 // Temporizador
